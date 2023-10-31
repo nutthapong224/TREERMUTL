@@ -1,0 +1,47 @@
+﻿
+@model IEnumerable<TREERMUTL.Models.TREERMUTLCREATE>
+@{
+    ViewData["Title"] = "ระบบจัดการข้อมูลต้นไม้";
+}
+
+<h1>ระบบเพิ่มข้อมูลต้นไม้</h1>
+
+<p>
+    <a asp-action="Create">เพิ่มข้อมูลต้นไม้</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhotoUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhotoUrl)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">แก้ไขข้อมูลต้นไม้</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">รายละเอียดข้อมูลต้นไม้</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">ลบข้อมูลต้นไม้</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

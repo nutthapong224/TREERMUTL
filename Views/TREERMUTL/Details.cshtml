@@ -1,0 +1,76 @@
+﻿@model TREERMUTL.Models.TREERMUTLCREATE
+
+@{
+    ViewData["Title"] = "รายละเอียดข้อมูลต้นไม้";
+} 
+
+
+
+<h1>รายละเอียดข้อมูลต้นไม้</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+       
+            <input type="hidden" asp-for="Id" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">ชื่อต้นไม้</label>
+            <input asp-for="Name" class="form-control" form-control-plaintext" readonly />
+               
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">รายละเอียดต้นไม้</label>
+            <input asp-for="Description" class="form-control" form-control-plaintext" readonly />
+                
+            </div>
+            <div class="col-md-12 btn-group pb-2">
+
+                <div class="form-group col-4 p-0">
+
+                    <label asp-for="ProfilePhoto" class="control-label">รูปต้นไม้</label>
+
+                    <img id="PreviewPhoto" src="~/Images/@Model.PhotoUrl" alt="Logo Image"
+                         width="500" height="500" />
+
+                    
+
+                </div>
+
+                <div class="col-1 p-0">
+                </div>
+
+
+            </div>
+               
+            <div class="form-group"> 
+                <p>ต้องการแก้ไขไหม</p>
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">กลับไปหน้าแก้ไข</a>
+            </div>
+            <div class="form-group pt-0 mt-0">
+                <div ID="HiddenDiv" style="visibility: hidden;">
+                    <input asp-for="PhotoUrl" id="PhotoUrl" value="" />
+                </div>
+            </div>
+       
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script type="text/javascript">
+        // $(".custom-file-input").on("change", function () {
+
+        //     var fileName = $(this).val().split("\\").pop();
+
+        //     document.getElementById('PreviewPhoto').src = window.URL.createObjectURL(this.files[0]);
+
+        //     document.getElementById('PhotoUrl').value = fileName;
+
+        // });
+    </script>
+}

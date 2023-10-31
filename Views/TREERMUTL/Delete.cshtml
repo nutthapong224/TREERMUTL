@@ -1,0 +1,89 @@
+﻿@model TREERMUTL.Models.TREERMUTLCREATE
+
+@{
+    ViewData["Title"] = "Create";
+} 
+
+<style>
+
+    .custom-file-button input[type=file]::file-selector-button {
+        display:none;
+    }
+
+
+
+    .custom-file-button:hover label {
+        background-color: #dde0e3;
+        cursor: pointer;
+    }
+
+</style>
+
+<h1>Delete</h1>
+
+<h4>CRUD</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Delete" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">ชื่อต้นไม้</label>
+                <input asp-for="Name" class="form-control" form-control-plaintext" readonly />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">รายละเอียดต้นไม้</label>
+                <input asp-for="Description" class="form-control" form-control-plaintext" readonly />
+
+            </div>
+            <div class="col-md-12 btn-group pb-2">
+
+                <div class="form-group col-4 p-0">
+
+                    <label asp-for="ProfilePhoto" class="control-label" >รูปภาพต้นไม้</label>
+
+                    <img id="PreviewPhoto" src="~/Images/@Model.PhotoUrl" alt="Logo Image"
+                         width="500" height="500" />
+
+
+
+                </div>
+
+                <div class="col-1 p-0">
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+               
+                <input type="submit" value="ลบข้อมูล" class="btn btn-primary" />
+            </div>
+            <div class="form-group pt-0 mt-0">
+                <div ID="HiddenDiv" style="visibility: hidden;">
+                    <input asp-for="PhotoUrl" id="PhotoUrl"  />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script type="text/javascript">
+        // $(".custom-file-input").on("change", function () {
+
+        //     var fileName = $(this).val().split("\\").pop();
+
+        //     document.getElementById('PreviewPhoto').src = window.URL.createObjectURL(this.files[0]);
+
+        //     document.getElementById('PhotoUrl').value = fileName;
+
+        // });
+    </script>
+}
